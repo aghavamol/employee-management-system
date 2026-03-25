@@ -48,8 +48,6 @@ const App = () => {
   return (
     <div>
       <h1>Employee List</h1>
-
-      {/* Search Filters */}
       <div>
         <input
           type="search"
