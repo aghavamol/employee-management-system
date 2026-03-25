@@ -1,0 +1,28 @@
+info:
+  name: CreateEmployee
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/api/employees
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "firstName": "Aakash",
+        "lastName": "Suresh",
+        "email": "aakash@test.com",
+        "department": "Finance",
+        "salary": 30000
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
