@@ -43,7 +43,15 @@ const App = () => {
     fetchEmployees(true);
   };
 
-  console.log(filters);
+  const handleDelete = (employeeId) => {
+    fetch(`http://localhost:8080/api/employees/${employeeId}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        fetchEmployees();
+      })
+      .catch(() => console.log("Failed to delete employee"));
+  };
 
   return (
     <div>
@@ -85,6 +93,7 @@ const App = () => {
             <th>Last Name</th>
             <th>Email</th>
             <th>Department</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -96,6 +105,11 @@ const App = () => {
                 <td>{employee.lastName}</td>
                 <td>{employee.email}</td>
                 <td>{employee.department}</td>
+                <td>
+                  <button onClick={() => handleDelete(employee.id)}>
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}
